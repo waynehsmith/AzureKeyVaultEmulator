@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Rest.Azure;
@@ -24,7 +24,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{certificateName}/backup")]
         [ProducesResponseType(typeof(BackupCertificateResult), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> BackupCertificate([FromRoute] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -39,7 +41,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{certificateName}/create")]
         [ProducesResponseType(typeof(CertificateOperation), StatusCodes.Status202Accepted)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> CreateCertificate([FromRoute] string certificateName, [FromBody] CertificateCreateParameters certificateCreateParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Accepted();
         }
@@ -54,7 +58,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [ProducesResponseType(typeof(DeletedCertificateBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
         [HttpDelete("{certificateName}")]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> DeleteCertificate([FromRoute] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -67,7 +73,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpDelete("contacts")]
         [ProducesResponseType(typeof(Contacts), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> DeleteCertificateContacts()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -81,7 +89,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpDelete("issuers/{issuerName}")]
         [ProducesResponseType(typeof(IPage<CertificateIssuerItem>), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> DeleteCertificateIssuer([FromRoute] string issuerName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -95,7 +105,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpDelete("{certificateName}/pending")]
         [ProducesResponseType(typeof(CertificateOperation), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> DeleteCertificateOperation([FromRoute] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -109,7 +121,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("{certificateName}/{certificateVersion}")]
         [ProducesResponseType(typeof(CertificateBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetCertificate([FromRoute] string certificateName, [FromRoute] string certificateVersion)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -122,7 +136,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("contacts")]
         [ProducesResponseType(typeof(Contacts), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetCertificateContacts()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -136,7 +152,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("issuers/{issuerName}")]
         [ProducesResponseType(typeof(IssuerBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetCertificateIssuer([FromRoute] string issuerName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -150,7 +168,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("issuers")]
         [ProducesResponseType(typeof(IPage<CertificateIssuerItem>), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetCertificateIssuers([FromQuery] int maxresult = 25)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -163,7 +183,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("{certificateName}/pending")]
         [ProducesResponseType(typeof(CertificateOperation), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetCertificateOperation([FromRoute] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -177,7 +199,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("{certificateName}/policy")]
         [ProducesResponseType(typeof(CertificatePolicy), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetCertificatePolicy([FromRoute] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -192,7 +216,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("{certificateName}/versions")]
         [ProducesResponseType(typeof(IPage<CertificateItem>), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetCertificateVersions([FromRoute] string certificateName, [FromQuery] int maxresults = 25)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -208,7 +234,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IPage<CertificateItem>), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetCertificates([FromRoute] string certificateName, [FromQuery] int maxresults = 25, [FromQuery] bool includePending = false)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -223,7 +251,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{certificateName}/import")]
         [ProducesResponseType(typeof(CertificateBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> ImportCertificate([FromRoute] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -238,7 +268,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{certificateName}/pending/merge")]
         [ProducesResponseType(typeof(CertificateBundle), StatusCodes.Status201Created)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> MergeCertificate([FromRoute] string certificateName, [FromBody] CertificateMergeParameters certificateMergeParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return StatusCode(StatusCodes.Status201Created);
         }
@@ -251,7 +283,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("restore")]
         [ProducesResponseType(typeof(CertificateBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> RestoreCertificate([FromBody] CertificateRestoreParameters certificateRestoreParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -264,7 +298,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPut("contacts")]
         [ProducesResponseType(typeof(Contacts), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> SetCertificateContacts([FromBody] Contacts contacts)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -278,7 +314,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPut("issuers/{issuerName}")]
         [ProducesResponseType(typeof(IssuerBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> SetCertificateIssuer([FromRoute] string issuerName, [FromBody] CertificateIssuerSetParameters certificateIssuerSetParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -294,7 +332,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPatch("{certificateName}/{certificateVersion}")]
         [ProducesResponseType(typeof(CertificateBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> UpdateCertificate([FromRoute] string certificateName, [FromRoute] string certificateVersion, [FromBody] CertificateUpdateParameters certificateUpdateParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -309,7 +349,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPatch("issuers/{issuerName}")]
         [ProducesResponseType(typeof(IssuerBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> UpdateCertificateIssuer([FromRoute] string issuerName, [FromBody] CertificateIssuerUpdateParameters certificateIssuerUpdateParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -323,7 +365,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPatch("{certificateName}/pending")]
         [ProducesResponseType(typeof(CertificateOperation), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> UpdateCertificateOperation([FromRoute] string certificateName, [FromBody] CertificateOperationUpdateParameter certificateOperationUpdateParameter)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -337,7 +381,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPatch("{certificateName}/policy")]
         [ProducesResponseType(typeof(CertificatePolicy), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> UpdateCertificatePolicy([FromRoute] string certificateName, [FromBody] CertificatePolicy certificatePolicy)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }

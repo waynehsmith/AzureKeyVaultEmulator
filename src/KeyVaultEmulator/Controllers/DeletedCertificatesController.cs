@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Rest.Azure;
@@ -25,7 +25,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("{certificateName}")]
         [ProducesResponseType(typeof(DeletedCertificateBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetDeletedCertificate([FromQuery] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -41,7 +43,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IPage<DeletedCertificateItem>), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetDeletedCertificates([FromQuery] int maxresults = 25, [FromQuery] bool includePending = false)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -56,7 +60,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpDelete("{certificateName}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> PurgeDeletedCertificate([FromRoute] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return NoContent();
         }
@@ -71,7 +77,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{certificateName}/recover")]
         [ProducesResponseType(typeof(CertificateBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> RecoverDeletedCertificate([FromRoute] string certificateName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }

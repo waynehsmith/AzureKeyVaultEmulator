@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
+using Microsoft.EntityFrameworkCore;
 
 namespace AzureKeyVaultEmulator
 {
@@ -16,6 +18,23 @@ namespace AzureKeyVaultEmulator
                 byte[] randomBytes = new byte[16];
                 rng.GetBytes(randomBytes);
                 return string.Concat(randomBytes.Select(x => x.ToString("X2"))).ToLower();
+            }
+        }
+
+        public static void SetCaseInsensitiveSearchesForSQLite(this ModelBuilder modelBuilder)
+        {
+            if (modelBuilder == null)
+            {
+                throw new ArgumentNullException(nameof(modelBuilder));
+            }
+
+            modelBuilder.UseCollation("NOCASE");
+
+            foreach (var property in modelBuilder.Model.GetEntityTypes()
+                                                    .SelectMany(t => t.GetProperties())
+                                                    .Where(p => p.ClrType == typeof(string)))
+            {
+                property.SetCollation("NOCASE");
             }
         }
     }

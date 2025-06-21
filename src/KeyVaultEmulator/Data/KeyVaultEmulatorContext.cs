@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace AzureKeyVaultEmulator.Data
 {
@@ -24,6 +25,7 @@ namespace AzureKeyVaultEmulator.Data
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
 
+            //modelBuilder.SetCaseInsensitiveSearchesForSQLite();
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(KeyVaultEmulatorContext).Assembly);
 
             base.OnModelCreating(modelBuilder);

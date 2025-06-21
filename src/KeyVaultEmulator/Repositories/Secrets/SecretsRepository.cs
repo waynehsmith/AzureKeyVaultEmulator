@@ -20,16 +20,19 @@ namespace AzureKeyVaultEmulator.Repositories
 
         public async Task<List<Secret>> GetSecretsAsync(string secretName, int? maxResults)
         {
+            var lowerSecretName = secretName.ToLower();
+
             var secretsQueryable = _dbContext.Secrets
-                .Where(s => string.Equals(s.Name, secretName, StringComparison.InvariantCulture)
+                .Where(s =>
+                    (s.Name.ToLower() == lowerSecretName)
                     && !s.Removed);
 
             if (maxResults.HasValue)
             {
-                secretsQueryable.Take(maxResults.Value);
+                secretsQueryable = secretsQueryable.Take(maxResults.Value);
             }
 
-            var secrets = await secretsQueryable.ToListAsync();
+            var secrets = await secretsQueryable.ToListAsync<Secret>();
 
             return secrets;
         }
@@ -68,7 +71,9 @@ namespace AzureKeyVaultEmulator.Repositories
             return secret;
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task GetSecret(string secretName, string secretVersion)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
 
         }

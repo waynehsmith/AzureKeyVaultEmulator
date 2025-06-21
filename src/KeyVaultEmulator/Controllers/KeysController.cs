@@ -29,7 +29,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{keyName}/backup")]
         [ProducesResponseType(typeof(BackupKeyResult), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> BackupKey([FromRoute] string keyName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -44,7 +46,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{keyName}/create")]
         [ProducesResponseType(typeof(KeyBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> CreateKey([FromRoute] string keyName, [FromBody] KeyCreateParameters createParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok(default(KeyBundle));
         }
@@ -61,7 +65,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{keyName}/decrypt")]
         [ProducesResponseType(typeof(KeyOperationResult), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> Decrypt([FromRoute] string keyName, [FromBody] KeyOperationsParameters operationsParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -76,7 +82,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpDelete("{keyName}")]
         [ProducesResponseType(typeof(DeletedKeyBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> DeleteKey([FromRoute] string keyName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -96,7 +104,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{keyName}/{keyVersion}/encrypt")]
         [ProducesResponseType(typeof(KeyOperationResult), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> Encrypt([FromRoute] string keyName, [FromRoute] string keyVersion, [FromBody] KeyOperationsParameters operationsParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -111,7 +121,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("{keyName}/{keyVersion}")]
         [ProducesResponseType(typeof(KeyBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetKey([FromRoute] string keyName, [FromRoute] string keyVersion)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -126,7 +138,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("{keyName}/versions")]
         [ProducesResponseType(typeof(IPage<KeyItem>), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetKeyVersions([FromRoute] string keyName, [FromQuery] int maxResults = 25)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -141,7 +155,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IPage<KeyItem>), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetKeys([FromQuery] int maxResults = 25)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -157,7 +173,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPut("{keyName}")]
         [ProducesResponseType(typeof(KeyBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> ImportKey([FromRoute] string keyName, [FromBody] KeyImportParameters keyImportParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -176,7 +194,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("restore")]
         [ProducesResponseType(typeof(KeyBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> RestoreKey([FromBody] string value)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -192,7 +212,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{keyName}/{keyVersion}/sign")]
         [ProducesResponseType(typeof(KeyOperationResult), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> Sign([FromRoute] string keyName, [FromRoute] string keyVersion, [FromBody] KeySignParameters keySignParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -210,7 +232,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{keyName}/{keyVersion}/unwrapkey")]
         [ProducesResponseType(typeof(KeyOperationResult), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> UnwrapKey([FromRoute] string keyName, [FromRoute] string keyVersion, [FromBody] KeyOperationsParameters keyOperationsParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -227,7 +251,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPatch("{keyName}/{keyVersion}")]
         [ProducesResponseType(typeof(KeyBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> UpdateKey([FromRoute] string keyName, [FromRoute] string keyVersion, KeyUpdateParameters keyUpdateParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -245,7 +271,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{keyName}/{keyVersion}/verify")]
         [ProducesResponseType(typeof(KeyVerifyResult), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> Verify([FromRoute] string keyName, [FromRoute] string keyVersion, [FromBody] KeyVerifyParameters keyVerifyParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -264,7 +292,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpPost("{keyName}/{keyVersion}/wrapkey")]
         [ProducesResponseType(typeof(KeyOperationResult), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> WrapKey([FromRoute] string keyName, [FromRoute] string keyVersion, [FromBody] KeyOperationsParameters keyOperationsParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }

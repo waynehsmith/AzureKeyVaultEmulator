@@ -1,9 +1,18 @@
+using AzureKeyVaultEmulator.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Https;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+
 using Serilog;
 using Serilog.Events;
 using Serilog.Extensions.Logging;
 using Serilog.Formatting.Elasticsearch;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AzureKeyVaultEmulator
 {
@@ -20,6 +29,21 @@ namespace AzureKeyVaultEmulator
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureKestrel((context, options) =>
+                    {
+                        var config = context.Configuration;
+                        var cert = X509CertificateLoader.LoadPkcs12(
+                            File.ReadAllBytes("./certificate.pfx"),
+                            config["ServerPFX"]);
+
+                        options.ConfigureEndpointDefaults(listenOptions =>
+                            listenOptions.UseHttps(new HttpsConnectionAdapterOptions
+                            {
+                                SslProtocols =  System.Security.Authentication.SslProtocols.Tls12,
+                                ServerCertificate = cert
+                            }));
+                    });
+
                     webBuilder.UseStartup<Startup>();
                 })
                 .UseSerilog((builderContext, config) =>

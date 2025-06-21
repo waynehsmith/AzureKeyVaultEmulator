@@ -66,7 +66,9 @@ namespace AzureKeyVaultEmulator.Services.Secrets
             return page;
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<SecretBundle> GetSecretAsync(string secretName, string secretVersion)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return new SecretBundle
             {
@@ -90,7 +92,9 @@ namespace AzureKeyVaultEmulator.Services.Secrets
             };
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<DeletedSecretBundle> DeleteSecretAsync(string secretName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return new DeletedSecretBundle
             {
@@ -98,17 +102,23 @@ namespace AzureKeyVaultEmulator.Services.Secrets
             };
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IPage<SecretItem>> GetSecretsAsync(int maxResults)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return new Page<SecretItem>();
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<SecretBundle> RestoreSecretAsync(string value)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return new SecretBundle();
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<SecretBundle> UpdateSecretAsync(string secretName, string secretVersion, SecretUpdateParameters secretUpdateParameters)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return new SecretBundle();
         }

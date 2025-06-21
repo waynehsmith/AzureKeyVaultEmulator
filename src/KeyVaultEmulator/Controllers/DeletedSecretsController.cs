@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Rest.Azure;
@@ -24,7 +24,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet("{secretName}")]
         [ProducesResponseType(typeof(DeletedSecretBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetDeletedSecret([FromRoute] string secretName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -38,7 +40,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IPage<DeletedSecretItem>), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> GetDeletedSecrets([FromQuery] int maxresults = 25)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }
@@ -53,7 +57,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [HttpDelete("{secretName}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> PurgeDeletedSecret([FromRoute] string secretName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return NoContent();
         }
@@ -67,7 +73,9 @@ namespace AzureKeyVaultEmulator.Controllers
         [ProducesResponseType(typeof(SecretBundle), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(KeyVaultError))]
         [HttpPost("{secretName}/recover")]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IActionResult> RecoverDeletedSecret([FromRoute] string secretName)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return Ok();
         }

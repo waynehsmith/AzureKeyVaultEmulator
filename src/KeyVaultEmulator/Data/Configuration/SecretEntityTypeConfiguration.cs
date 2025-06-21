@@ -17,6 +17,19 @@ namespace AzureKeyVaultEmulator.Data.Configuration
 
             builder.Property(e => e.Id)
                 .ValueGeneratedOnAdd();
+
+            // Configure the owned collection of Tags
+            builder.OwnsMany(e => e.Tags, tag =>
+            {
+                tag.WithOwner().HasForeignKey("SecretId");
+
+                tag.Property(t => t.Key).IsRequired();
+                tag.Property(t => t.Value);
+
+                // Avoid auto-gen composite key problems
+                tag.HasKey("SecretId", "Key");
+            });
+
         }
     }
 }
